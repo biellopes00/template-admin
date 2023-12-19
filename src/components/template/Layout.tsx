@@ -1,5 +1,5 @@
 import Content from "./Content"
-import SideMenu from "./SideMenu"
+import SideMenu from "./AsideMenu"
 import Header from "./Title"
 
 interface LayoutProps {
@@ -9,10 +9,10 @@ interface LayoutProps {
 }
 export default function Layout(props: LayoutProps) {
     return (
-        <div className={`flex h-screen w-screen`}>
+        <div className={`dark flex h-screen w-screen`}>
             <SideMenu />
-            <div className={`flex flex-column w-full
-                p-7 bg-gray-300
+            <div className={`flex flex-col w-full
+                p-7 bg-gray-300 dark:bg-gray-800
             `}>
                 <Header title={props.title} subtitle={props.subtitle} />
                 <Content>

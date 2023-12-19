@@ -4,7 +4,7 @@ interface ContentProps {
 export default function Header(props: ContentProps) {
     return (
         <div className={`
-            flex felx-col mt-7
+            flex flex-col mt-7
         `}>
        {props.children}
         </div>
