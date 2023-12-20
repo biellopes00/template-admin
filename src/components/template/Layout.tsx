@@ -1,7 +1,7 @@
 import Content from "./Content"
-import SideMenu from "./AsideMenu"
 import Header from "./Title"
-import useAppData from "@/data/hook/useAppData"
+import useAppData from "../../data/hook/useAppData"
+import AsideMenu from "./AsideMenu"
 
 interface LayoutProps {
     title: string
@@ -12,7 +12,7 @@ export default function Layout(props: LayoutProps) {
     const {theme} = useAppData()
     return (
         <div className={`${theme} flex h-screen w-screen`}>
-            <SideMenu />
+            <AsideMenu />
             <div className={`flex flex-col w-full
                 p-7 bg-gray-300 dark:bg-gray-800
             `}>
