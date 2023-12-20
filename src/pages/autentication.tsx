@@ -5,24 +5,28 @@ import { useState } from "react";
 
 export default function Autentication() {
 
-const {user, googleLogin} = useAuth()
+    const { login, register, googleLogin } = useAuth()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(null)
     const [mode, setMode] = useState<'login' | 'register'>('login')
 
-    function showError(message, time=5){
+    function showError(message, time = 5) {
         setError(message)
         setTimeout(() => setError(null), time * 1000)
     }
-    function submit() {
-        if (mode === 'login') {
-            console.log('login')
-            showError("An error occurred")
-        } else {
-            console.log('register')
-            showError("An error occurred")
+    async function submit() {
+        try {
+
+            if (mode === 'login') {
+                await login(email, password)
+            } else {
+                await register(email, password)
+                
+            }
+        } catch (e) {
+            showError(e?.message ?? 'An error occurred')
         }
     }
     return (
@@ -41,18 +45,18 @@ const {user, googleLogin} = useAuth()
                     {mode === 'login' ? "Enter with your login" : "Register on the platform"}
                 </h1>
                 {error ? (
-                     <div className={`
+                    <div className={`
                      flex items-center
                          bg-red-500 text-white py-3 px-5 my-2
                          border border-red-700 rounded-lg
                      `}>
-                         {WarnIcon()}
-                         <span className="ml-3">{error}</span>
-                     </div>
-                ):(
+                        {WarnIcon()}
+                        <span className="ml-3">{error}</span>
+                    </div>
+                ) : (
                     false
                 )}
-               
+
 
                 <AuthInput
                     label="Email"
