@@ -1,5 +1,5 @@
 import Content from "./Content"
-import Header from "./Title"
+import Header from "./Header"
 import useAppData from "../../data/hook/useAppData"
 import AsideMenu from "./AsideMenu"
 
