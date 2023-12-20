@@ -1,8 +1,12 @@
 import AuthInput from "@/components/auth/AuthInput";
 import { WarnIcon } from "@/components/icons";
+import useAuth from "@/data/hook/useAuth";
 import { useState } from "react";
 
 export default function Autentication() {
+
+const {user, googleLogin} = useAuth()
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(null)
@@ -72,7 +76,7 @@ export default function Autentication() {
                 </button>
                 <hr className="my-6 border-gray-300 w-full" />
 
-                <button onClick={submit} className={`
+                <button onClick={googleLogin} className={`
             w-full bg-red-500 hover:bg-red-400 rounded-lg px-4 py-3
         `}>
                     Sign up with google
